@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   resource :plan, only: [:show, :create]
   # Defines the root path route ("/")
-  # root "posts#index"
+  root 'plan#show'
 end
