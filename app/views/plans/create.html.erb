@@ -1,0 +1,35 @@
+<h1> Plan </h1>
+
+<table>
+  <thead class="bg-gray-200 border-b">
+    <tr>
+      <th>
+      <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"> Id </th>
+      <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"> Only My Time </th>
+      <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"> Time (with children) </th>
+      <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"> Loops </th>
+      <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"> Rows </th>
+      <th class="text-sm font-medium text-gray-900 px-6 py-4 text-left"> Description </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tree.each do |node| %>
+      <tr 
+          data-controller="toggle" 
+          data-action="click->toggle#toggle" 
+          data-toggle-toggle-outlet=".toggle-target"
+          data-toggle-id-value=<%= node.id %> 
+          data-toggle-status-value="expanded"
+          data-toggle-children-param="<%= node.children_ids %>" 
+          class="toggle-target bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 <%= bg(node.my_time) %>">
+        <td data-toggle-target="indicator"> - </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"> <%= node.id %> </td>
+        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"> <%= number_to_delimited(node.my_time.negative? ? 0 : node.my_time) %> </td>
+        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"> <%= number_to_delimited(node.total_time) %> </td>
+        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"> <%= number_to_delimited(node.loops) %> </td>
+        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"> <%= number_to_delimited(node.rows) %> </td>
+        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"> <%= node.desc.html_safe %>  </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

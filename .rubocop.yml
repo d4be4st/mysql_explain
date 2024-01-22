@@ -1,0 +1,20 @@
+Layout/LineLength:
+  Max: 150
+  AllowedPatterns:
+    - '\A#'
+
+Style/AccessorGrouping:
+  EnforcedStyle: separated
+
+Style/Documentation:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+AllCops:
+  NewCops: enable
+
