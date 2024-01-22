@@ -4,8 +4,7 @@ module ApplicationHelper
   include ActiveSupport::NumberHelper
 
   def bg(time) # rubocop:disable Metrics/MethodLength
-    return '' if time.negative?
-    return '' if time < 500
+    return 'bg-white' if time < 500
 
     case time
     when 500..1000
